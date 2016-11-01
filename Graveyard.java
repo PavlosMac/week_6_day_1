@@ -1,11 +1,13 @@
 public class Graveyard{
   private String name;
   private Grave[] cemetery;
+  private Warden guy;
 
 
   public Graveyard(String name){
     this.name = name;
     this.cemetery = new Grave[11];
+    this.guy = new Warden();
   }
 
 
@@ -24,6 +26,15 @@ public class Graveyard{
     return counter;
   }
 
+  public int wardensGraveLog(){
+    int counter = 0;
+    for (Grave hole: cemetery){
+      if (hole != null){
+
+      }
+    }
+    return counter;
+  }
 
   public void bury(Grave grave){
     if (cemeteryFull()){
@@ -42,5 +53,20 @@ public class Graveyard{
       cemetery[i] = null;
     }
   }
+
+  public String wardenIshappy(){
+    if (cemetery.length == 10){
+    
+    }
+    return "Happy warden";
+  }
+
+  public boolean isWardenDrunk(){
+    if (cemeteryFull()){
+    return;
+    }
+  }
+
+
 
 }   

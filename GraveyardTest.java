@@ -51,4 +51,19 @@ public class GraveyardTest{
     assertEquals(0, graveyard.graveCount());
   }
 
+  @Test 
+  public void wardenGetsHappyWithTenGraves(){
+    for (int i = 0; i < 10; i++ ) {
+      graveyard.bury(grave);
+    }
+    assertEquals("Happy warden", graveyard.wardenIshappy()); 
+  }
+
+  @Test void wardenDrinksWhenCemeteryisFull(){
+    for (int i = 0; i < 12; i++ ) {
+      graveyard.bury(grave);
+    }
+    assertEquals(true, graveyard.isWardenDrunk());
+  }
+
 }
