@@ -1,71 +1,61 @@
+
+import java.util.*;
+
 public class Graveyard{
   private String name;
-  private Grave[] cemetery;
-  private Warden guy;
+  private ArrayList<Buriable> cemetery;
+  
 
 
   public Graveyard(String name){
     this.name = name;
-    this.cemetery = new Grave[11];
-    this.guy = new Warden();
-  }
+    this.cemetery = new ArrayList<Buriable>();   
+    }
 
 
   public String getName(){
   return this.name;
   }
 
-
   public int graveCount(){
-    int counter = 0;
-    for (Grave hole: cemetery){
-      if (hole != null){
-        counter++;
-      }
+    return this.cemetery.size();
+  }
+
+ 
+  public void bury(Buriable body){
+    this.cemetery.add(body)
+  }
+
+
+  public Buriable digOut(){
+    if (graveCount() > 0) {
+      Buriable body = cemetery.remove(0);
+      return body;
     }
-    return counter;
+    return null;
   }
 
-  public int wardensGraveLog(){
-    int counter = 0;
-    for (Grave hole: cemetery){
-      if (hole != null){
 
-      }
-    }
-    return counter;
-  }
+ 
 
-  public void bury(Grave grave){
-    if (cemeteryFull()){
-      return;
-    }
-    int graves = graveCount();
-    cemetery[graves] = grave; 
-  }
+  // public void empty(){
+  //   for (int i = 0; i < cemetery.length; i++ ) {
+  //     cemetery[i] = null;
+  //   }
+  // }
 
-  public boolean cemeteryFull(){
-    return cemetery.length == graveCount();
-  }
-
-  public void empty(){
-    for (int i = 0; i < cemetery.length; i++ ) {
-      cemetery[i] = null;
-    }
-  }
-
-  public String wardenIshappy(){
-    if (cemetery.length == 10){
+  // public String wardenIshappy(){
+  //   if (cemetery.length == 10){
     
-    }
-    return "Happy warden";
-  }
+  //   }
+  //   return "Happy warden";
+  // }
 
-  public boolean isWardenDrunk(){
-    if (cemeteryFull()){
-    return;
-    }
-  }
+  // public boolean isWardenDrunk(){
+  //   if (cemeteryFull()){
+  //   return;
+  //   }
+  // }
 
 
 

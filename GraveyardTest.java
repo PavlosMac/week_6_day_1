@@ -1,14 +1,19 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import org.junit.*;
 
-public class GraveyardTest{
+public class GraveyardTest {
   Graveyard graveyard;
-  Grave grave;
+  Corpse corpse;
+  Roadkill roadkill;
+  PlagueInfected plagueinfected;
 
   @Before 
-  public void before(){
+  public void before() {
     graveyard = new Graveyard("Greyfriars");
-    grave = new Grave();
+    corpse = new Corpse();
+    roadkill = new Roadkill();
+    plagueinfected = new PlagueInfected();
   }
 
   @Test 
@@ -22,48 +27,56 @@ public class GraveyardTest{
   }
 
   @Test 
-  public void graveyardCanHaveGrave(){
-    graveyard.bury(grave);
+  public void graveyardCanBuryCorpse(){
+    graveyard.bury(corpse);
     assertEquals(1, graveyard.graveCount());
   }
 
   @Test 
   public void cantBuryWhenCemeteryIsFull(){
     for (int i = 0; i < 15 ; i++ ) {
-        graveyard.bury(grave);
+        graveyard.bury(corpse);
     }
-    assertEquals(11, graveyard.graveCount());
+    assertEquals(15, graveyard.graveCount());
   }
 
   @Test 
   public void graveyardIsFull(){
-    for (int i = 0; i < 11 ; i++) {
-      graveyard.bury(grave);
+    for (int i = 0; i < 13 ; i++) {
+      graveyard.bury(corpse);
     }
     assertEquals(true, graveyard.cemeteryFull());
   }
 
-  @Test 
-  public void graveyeardEmptyAfterZombieRising(){
-    graveyard.bury(grave);
-    assertEquals(1 , graveyard.graveCount());
-    graveyard.empty();
-    assertEquals(0, graveyard.graveCount());
+
+
+  @Test
+  public void graveyardCanBeDugOut(){
+    graveyard.bury(corpse);
+    graveyard.digOut
   }
 
-  @Test 
-  public void wardenGetsHappyWithTenGraves(){
-    for (int i = 0; i < 10; i++ ) {
-      graveyard.bury(grave);
-    }
-    assertEquals("Happy warden", graveyard.wardenIshappy()); 
-  }
+  // @Test 
+  // public void graveyeardEmptyAfterZombieRising(){
+  //   graveyard.bury(grave);
+  //   assertEquals(1 , graveyard.graveCount());
+  //   graveyard.empty();
+  //   assertEquals(0, graveyard.graveCount());
+  // }
 
-  @Test void wardenDrinksWhenCemeteryisFull(){
-    for (int i = 0; i < 12; i++ ) {
-      graveyard.bury(grave);
-    }
-    assertEquals(true, graveyard.isWardenDrunk());
-  }
+  // @Test 
+  // public void wardenGetsHappyWithTenGraves(){
+  //   for (int i = 0; i < 10; i++ ) {
+  //     graveyard.bury(grave);
+  //   }
+  //   assertEquals("Happy warden", graveyard.wardenIshappy()); 
+  // }
+
+  // @Test void wardenDrinksWhenCemeteryisFull(){
+  //   for (int i = 0; i < 12; i++ ) {
+  //     graveyard.bury(grave);
+  //   }
+  //   assertEquals(true, graveyard.isWardenDrunk());
+  // }
 
 }
